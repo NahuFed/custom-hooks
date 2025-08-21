@@ -48,7 +48,12 @@ const { values, handleChange, reset } = useForm({
         </div>
 
         <div className="exercise-demo">
-          <h3>🎮 Área de Práctica</h3>
+          <h3>🎮 Área de Testing</h3>
+          <TestingArea />
+        </div>
+
+        <div className="exercise-demo">
+          <h3>🧪 Área de Práctica</h3>
           <PracticeArea />
         </div>
 
@@ -151,6 +156,175 @@ function ContactForm() {
             </div>
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+const TestingArea = () => {
+  const [hookStatus, setHookStatus] = useState('no-tested')
+  
+  const testHook = async () => {
+    try {
+      const useForm = await import('../hooks/useForm.js').then(module => module.default)
+      setHookStatus('success')
+      alert('¡Genial! Tu hook useForm se importó correctamente.')
+    } catch (error) {
+      setHookStatus('error')
+      alert(`Error: ${error.message}. Crea el archivo src/hooks/useForm.js`)
+    }
+  }
+
+  return (
+    <div style={{ 
+      background: '#f1f8ff', 
+      padding: '2rem', 
+      borderRadius: '12px',
+      border: '2px solid #0066cc',
+      margin: '1rem 0'
+    }}>
+      <h4>🧪 Testing de tu Hook</h4>
+      
+      <div style={{ marginBottom: '1rem' }}>
+        <button 
+          className="demo-button"
+          onClick={testHook}
+          style={{ background: '#007acc' }}
+        >
+          🔍 Probar mi hook useForm
+        </button>
+        
+        {hookStatus === 'success' && (
+          <span style={{ color: 'green', marginLeft: '1rem' }}>
+            ✅ Hook importado correctamente
+          </span>
+        )}
+        {hookStatus === 'error' && (
+          <span style={{ color: 'red', marginLeft: '1rem' }}>
+            ❌ Error al importar hook
+          </span>
+        )}
+      </div>
+
+      <div style={{ 
+        background: 'white', 
+        padding: '1.5rem', 
+        borderRadius: '8px',
+        border: '1px solid #dee2e6'
+      }}>
+        <h4>🎯 Componente de Prueba</h4>
+        <p>Usa este formulario para probar tu hook:</p>
+        
+        <div className="code-block">
+          <pre>{`function FormTest() {
+  // const { valores, handleChange, resetForm } = useForm({
+  //   nombre: '',
+  //   email: '',
+  //   comentario: 'Me gusta React!'
+  // })
+
+  const enviarFormulario = (e) => {
+    e.preventDefault()
+    // console.log('Datos del formulario:', valores)
+    alert('Formulario enviado!')
+    // resetForm()
+  }
+
+  return (
+    <form onSubmit={enviarFormulario} style={{
+      background: 'white', 
+      padding: '1.5rem', 
+      borderRadius: '8px'
+    }}>
+      <h4>📝 Formulario de Contacto</h4>
+      
+      <div style={{marginBottom: '1rem'}}>
+        <label>Nombre: </label>
+        <input 
+          name="nombre"
+          // value={valores.nombre}
+          // onChange={handleChange}
+          placeholder="Tu nombre"
+          style={{marginLeft: '0.5rem', padding: '0.5rem'}}
+        />
+      </div>
+      
+      <div style={{marginBottom: '1rem'}}>
+        <label>Email: </label>
+        <input 
+          name="email"
+          type="email"
+          // value={valores.email}
+          // onChange={handleChange}
+          placeholder="tu@email.com"
+          style={{marginLeft: '0.5rem', padding: '0.5rem'}}
+        />
+      </div>
+      
+      <div style={{marginBottom: '1rem'}}>
+        <label>Comentario: </label>
+        <textarea 
+          name="comentario"
+          // value={valores.comentario}
+          // onChange={handleChange}
+          placeholder="Tu comentario aquí..."
+          style={{
+            marginLeft: '0.5rem', 
+            display: 'block', 
+            marginTop: '0.5rem',
+            padding: '0.5rem',
+            width: '100%',
+            minHeight: '80px'
+          }}
+        />
+      </div>
+      
+      <button 
+        type="submit"
+        style={{marginRight: '1rem', padding: '0.5rem 1rem'}}
+      >
+        📤 Enviar
+      </button>
+      
+      <button 
+        type="button"
+        // onClick={resetForm}
+        style={{padding: '0.5rem 1rem'}}
+      >
+        🧹 Limpiar
+      </button>
+      
+      <div style={{
+        marginTop: '1rem', 
+        padding: '1rem', 
+        background: '#f0f8ff', 
+        borderRadius: '4px'
+      }}>
+        <p><strong>📊 Estado actual del formulario:</strong></p>
+        {/* <p>👤 Nombre: {valores.nombre || '(vacío)'}</p> */}
+        {/* <p>📧 Email: {valores.email || '(vacío)'}</p> */}
+        {/* <p>💬 Comentario: {valores.comentario || '(vacío)'}</p> */}
+        <p>🔗 (Descomenta para ver valores en tiempo real)</p>
+      </div>
+    </form>
+  )
+}`}</pre>
+        </div>
+        
+        <div style={{ 
+          marginTop: '1rem',
+          padding: '1rem',
+          background: '#e7f3ff',
+          borderRadius: '6px'
+        }}>
+          <p><strong>💡 ¿Cómo probar?</strong></p>
+          <ol>
+            <li>Crea tu hook <code>useForm</code> en el archivo especificado</li>
+            <li>Haz clic en "🔍 Probar mi hook" arriba</li>
+            <li>Si funciona, descomenta las líneas del componente</li>
+            <li>Prueba escribir en los campos y hacer reset</li>
+          </ol>
+        </div>
       </div>
     </div>
   )

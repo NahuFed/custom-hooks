@@ -43,7 +43,12 @@ const [edad, setEdad] = useLocalStorage('edad', '25')
         </div>
 
         <div className="exercise-demo">
-          <h3>🎮 Área de Práctica</h3>
+          <h3>🎮 Área de Testing</h3>
+          <TestingArea />
+        </div>
+
+        <div className="exercise-demo">
+          <h3>🧪 Área de Práctica</h3>
           <PracticeArea />
         </div>
 
@@ -119,6 +124,117 @@ function MiComponente() {
             </div>
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+const TestingArea = () => {
+  const [hookStatus, setHookStatus] = useState('no-tested')
+  
+  const testHook = async () => {
+    try {
+      const useLocalStorage = await import('../hooks/useLocalStorage.js').then(module => module.default)
+      setHookStatus('success')
+      alert('¡Perfecto! Tu hook useLocalStorage se importó correctamente.')
+    } catch (error) {
+      setHookStatus('error')
+      alert(`Error: ${error.message}. Crea el archivo src/hooks/useLocalStorage.js`)
+    }
+  }
+
+  return (
+    <div style={{ 
+      background: '#f1f8ff', 
+      padding: '2rem', 
+      borderRadius: '12px',
+      border: '2px solid #0066cc',
+      margin: '1rem 0'
+    }}>
+      <h4>🧪 Testing de tu Hook</h4>
+      
+      <div style={{ marginBottom: '1rem' }}>
+        <button 
+          className="demo-button"
+          onClick={testHook}
+          style={{ background: '#007acc' }}
+        >
+          🔍 Probar mi hook useLocalStorage
+        </button>
+        
+        {hookStatus === 'success' && (
+          <span style={{ color: 'green', marginLeft: '1rem' }}>
+            ✅ Hook importado correctamente
+          </span>
+        )}
+        {hookStatus === 'error' && (
+          <span style={{ color: 'red', marginLeft: '1rem' }}>
+            ❌ Error al importar hook
+          </span>
+        )}
+      </div>
+
+      <div style={{ 
+        background: 'white', 
+        padding: '1.5rem', 
+        borderRadius: '8px',
+        border: '1px solid #dee2e6'
+      }}>
+        <h4>🎯 Componente de Prueba</h4>
+        <p>Usa este ejemplo para probar tu hook:</p>
+        
+        <div className="code-block">
+          <pre>{`function LocalStorageTest() {
+  // const [nombre, setNombre] = useLocalStorage('test-nombre', 'Usuario')
+  // const [mensaje, setMensaje] = useLocalStorage('test-mensaje', 'Hola mundo')
+  
+  return (
+    <div style={{background: 'white', padding: '1rem', borderRadius: '6px'}}>
+      <h4>🧪 Test de Persistencia</h4>
+      
+      <div style={{marginBottom: '1rem'}}>
+        <label>Nombre: </label>
+        <input 
+          // value={nombre}
+          // onChange={(e) => setNombre(e.target.value)}
+          placeholder="Tu nombre aquí"
+        />
+      </div>
+      
+      <div style={{marginBottom: '1rem'}}>
+        <label>Mensaje: </label>
+        <input 
+          // value={mensaje}
+          // onChange={(e) => setMensaje(e.target.value)}
+          placeholder="Tu mensaje aquí"
+        />
+      </div>
+      
+      <div style={{padding: '1rem', background: '#f0f8ff', borderRadius: '4px'}}>
+        {/* <p>👋 Hola {nombre}!</p> */}
+        {/* <p>💬 {mensaje}</p> */}
+        <p>📝 Los datos se guardan automáticamente</p>
+        <p>🔄 Recarga la página para verificar persistencia</p>
+      </div>
+    </div>
+  )
+}`}</pre>
+        </div>
+        
+        <div style={{ 
+          marginTop: '1rem',
+          padding: '1rem',
+          background: '#e7f3ff',
+          borderRadius: '6px'
+        }}>
+          <p><strong>💡 ¿Cómo probar?</strong></p>
+          <ol>
+            <li>Crea tu hook <code>useLocalStorage</code> en el archivo especificado</li>
+            <li>Haz clic en "🔍 Probar mi hook" arriba</li>
+            <li>Si funciona, descomenta las líneas del componente</li>
+            <li>Prueba escribir datos y recargar la página</li>
+          </ol>
+        </div>
       </div>
     </div>
   )

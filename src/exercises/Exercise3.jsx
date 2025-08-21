@@ -59,7 +59,12 @@ const { noticias, loading, cargarNoticias, filtrarPorCategoria } = useNews()
         </div>
 
         <div className="exercise-demo">
-          <h3>🎮 Área de Práctica</h3>
+          <h3>🎮 Área de Testing</h3>
+          <TestingArea />
+        </div>
+
+        <div className="exercise-demo">
+          <h3>🧪 Área de Práctica</h3>
           <PracticeArea />
         </div>
 
@@ -165,6 +170,147 @@ function NoticiasApp() {
             </div>
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+const TestingArea = () => {
+  const [hookStatus, setHookStatus] = useState('no-tested')
+  
+  const testHook = async () => {
+    try {
+      const useNews = await import('../hooks/useNews.js').then(module => module.default)
+      setHookStatus('success')
+      alert('¡Excelente! Tu hook useNews se importó correctamente. Ahora puedes probarlo abajo.')
+    } catch (error) {
+      setHookStatus('error')
+      alert(`Error al importar tu hook: ${error.message}. Asegúrate de haber creado el archivo src/hooks/useNews.js`)
+    }
+  }
+
+  return (
+    <div style={{ 
+      background: '#f1f8ff', 
+      padding: '2rem', 
+      borderRadius: '12px',
+      border: '2px solid #0066cc',
+      margin: '1rem 0'
+    }}>
+      <h4>🧪 Testing de tu Hook</h4>
+      
+      <div style={{ marginBottom: '1rem' }}>
+        <button 
+          className="demo-button"
+          onClick={testHook}
+          style={{ background: '#007acc' }}
+        >
+          🔍 Probar si mi hook funciona
+        </button>
+        
+        {hookStatus === 'success' && (
+          <span style={{ color: 'green', marginLeft: '1rem' }}>
+            ✅ Hook importado correctamente
+          </span>
+        )}
+        {hookStatus === 'error' && (
+          <span style={{ color: 'red', marginLeft: '1rem' }}>
+            ❌ Error al importar hook
+          </span>
+        )}
+      </div>
+
+      <div style={{ 
+        background: 'white', 
+        padding: '1.5rem', 
+        borderRadius: '8px',
+        border: '1px solid #dee2e6'
+      }}>
+        <h4>🎯 Componente de Prueba</h4>
+        <p>Una vez que tu hook funcione, podrás usar este componente para probarlo:</p>
+        
+        <div className="code-block">
+          <pre>{`// Este componente ya está listo para usar tu hook:
+function NewsTestComponent() {
+  // const { noticias, loading, filtrarPorCategoria } = useNews()
+  
+  return (
+    <div>
+      <div style={{marginBottom: '1rem'}}>
+        <button 
+          // onClick={() => filtrarPorCategoria('todas')}
+          style={{margin: '0.25rem'}}
+        >
+          📄 Todas
+        </button>
+        <button 
+          // onClick={() => filtrarPorCategoria('tecnologia')}
+          style={{margin: '0.25rem'}}
+        >
+          💻 Tecnología
+        </button>
+        <button 
+          // onClick={() => filtrarPorCategoria('deportes')}
+          style={{margin: '0.25rem'}}
+        >
+          ⚽ Deportes
+        </button>
+        <button 
+          // onClick={() => filtrarPorCategoria('ciencia')}
+          style={{margin: '0.25rem'}}
+        >
+          🔬 Ciencia
+        </button>
+      </div>
+      
+      {/* {loading ? (
+        <p>⏳ Cargando noticias...</p>
+      ) : (
+        <div>
+          <p>📰 {noticias.length} noticias encontradas</p>
+          {noticias.map(noticia => (
+            <div key={noticia.id} style={{
+              background: 'white',
+              padding: '1rem',
+              margin: '0.5rem 0',
+              borderRadius: '6px',
+              border: '1px solid #ddd'
+            }}>
+              <h4>{noticia.titulo}</h4>
+              <p style={{fontSize: '0.9rem', color: '#666'}}>
+                {noticia.contenido}
+              </p>
+              <small style={{
+                background: '#e9ecef',
+                padding: '0.25rem 0.5rem',
+                borderRadius: '12px',
+                fontSize: '0.8rem'
+              }}>
+                📁 {noticia.categoria}
+              </small>
+            </div>
+          ))}
+        </div>
+      )} */}
+    </div>
+  )
+}`}</pre>
+        </div>
+        
+        <div style={{ 
+          marginTop: '1rem',
+          padding: '1rem',
+          background: '#e7f3ff',
+          borderRadius: '6px'
+        }}>
+          <p><strong>💡 ¿Cómo probar?</strong></p>
+          <ol>
+            <li>Asegúrate de que la API esté corriendo (<code>npm run api</code>)</li>
+            <li>Crea tu hook <code>useNews</code> en el archivo especificado</li>
+            <li>Haz clic en "🔍 Probar si mi hook funciona" arriba</li>
+            <li>Si funciona, descomenta las líneas del componente para probarlo</li>
+          </ol>
+        </div>
       </div>
     </div>
   )
