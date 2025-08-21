@@ -133,6 +133,24 @@ body {
   border-left: 4px solid #667eea;
 }
 
+.code-block pre {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  font-family: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.code-block pre code {
+  font-family: inherit;
+  white-space: pre;
+}
+
 .highlight-box {
   background: linear-gradient(135deg, #667eea20, #764ba220);
   border: 1px solid #667eea50;
