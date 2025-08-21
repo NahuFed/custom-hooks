@@ -1,0 +1,102 @@
+{
+  "noticias": [
+    {
+      "id": 1,
+      "titulo": "React 19 presenta nuevas características revolucionarias",
+      "contenido": "La nueva versión de React incluye mejoras significativas en el rendimiento y nuevas APIs para desarrolladores.",
+      "categoria": "tecnologia",
+      "autor": "María González",
+      "fecha": "2025-08-21",
+      "imagen": "https://picsum.photos/300/200?random=1"
+    },
+    {
+      "id": 2,
+      "titulo": "El futuro de la inteligencia artificial en el desarrollo web",
+      "contenido": "Análisis profundo sobre cómo la IA está transformando la manera en que construimos aplicaciones web.",
+      "categoria": "tecnologia",
+      "autor": "Carlos Rodríguez",
+      "fecha": "2025-08-20",
+      "imagen": "https://picsum.photos/300/200?random=2"
+    },
+    {
+      "id": 3,
+      "titulo": "Mundial de Fútbol: Argentina clasifica a cuartos de final",
+      "contenido": "La selección argentina logró una victoria convincente por 3-1 ante Brasil en los octavos de final.",
+      "categoria": "deportes",
+      "autor": "Ana Martínez",
+      "fecha": "2025-08-19",
+      "imagen": "https://picsum.photos/300/200?random=3"
+    },
+    {
+      "id": 4,
+      "titulo": "Nuevos tratamientos prometedores contra el cáncer",
+      "contenido": "Investigadores desarrollan terapias innovadoras que muestran resultados alentadores en ensayos clínicos.",
+      "categoria": "salud",
+      "autor": "Dr. Luis Fernández",
+      "fecha": "2025-08-18",
+      "imagen": "https://picsum.photos/300/200?random=4"
+    },
+    {
+      "id": 5,
+      "titulo": "Mercados financieros muestran signos de recuperación",
+      "contenido": "Los índices bursátiles registran ganancias significativas tras las últimas medidas económicas.",
+      "categoria": "economia",
+      "autor": "Patricia Silva",
+      "fecha": "2025-08-17",
+      "imagen": "https://picsum.photos/300/200?random=5"
+    },
+    {
+      "id": 6,
+      "titulo": "Descubren nueva especie marina en las profundidades del océano",
+      "contenido": "Científicos marinos identifican una nueva especie de pez luminoso a 3000 metros de profundidad.",
+      "categoria": "ciencia",
+      "autor": "Dr. Roberto Océano",
+      "fecha": "2025-08-16",
+      "imagen": "https://picsum.photos/300/200?random=6"
+    },
+    {
+      "id": 7,
+      "titulo": "Festival de Cine independiente atrae a miles de visitantes",
+      "contenido": "El evento cultural más importante del año presenta obras de directores emergentes de toda Latinoamérica.",
+      "categoria": "entretenimiento",
+      "autor": "Sofía Castro",
+      "fecha": "2025-08-15",
+      "imagen": "https://picsum.photos/300/200?random=7"
+    },
+    {
+      "id": 8,
+      "titulo": "Avances en energía solar superan todas las expectativas",
+      "contenido": "La eficiencia de los paneles solares alcanza un nuevo récord del 35% en condiciones de laboratorio.",
+      "categoria": "tecnologia",
+      "autor": "Ing. Juan Verde",
+      "fecha": "2025-08-14",
+      "imagen": "https://picsum.photos/300/200?random=8"
+    },
+    {
+      "id": 9,
+      "titulo": "Olimpiadas 2028: se anuncian las nuevas disciplinas",
+      "contenido": "Los Juegos Olímpicos incluirán deportes electrónicos y nuevas modalidades de deportes acuáticos.",
+      "categoria": "deportes",
+      "autor": "Miguel Deportes",
+      "fecha": "2025-08-13",
+      "imagen": "https://picsum.photos/300/200?random=9"
+    },
+    {
+      "id": 10,
+      "titulo": "Inflación muestra tendencia a la baja por tercer mes consecutivo",
+      "contenido": "Los datos económicos indican una estabilización de precios que beneficia al consumo interno.",
+      "categoria": "economia",
+      "autor": "Elena Números",
+      "fecha": "2025-08-12",
+      "imagen": "https://picsum.photos/300/200?random=10"
+    }
+  ],
+  "categorias": [
+    { "id": "tecnologia", "nombre": "Tecnología", "color": "#3B82F6" },
+    { "id": "deportes", "nombre": "Deportes", "color": "#10B981" },
+    { "id": "salud", "nombre": "Salud", "color": "#F59E0B" },
+    { "id": "economia", "nombre": "Economía", "color": "#8B5CF6" },
+    { "id": "ciencia", "nombre": "Ciencia", "color": "#06B6D4" },
+    { "id": "entretenimiento", "nombre": "Entretenimiento", "color": "#EC4899" }
+  ]
+}

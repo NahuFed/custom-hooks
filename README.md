@@ -76,23 +76,18 @@ Los ejercicios incluyen:
 - **Aprendes:** useEffect, serialización, event listeners
 - **⚠️ Tú implementas:** Persistencia y sincronización
 
-#### ⚡ Ejercicio 3: useFetch Hook
+#### ⚡ Ejercicio 3: useNews Hook - API de Noticias
 - **Dificultad:** Intermedio
-- **Objetivo:** Manejar peticiones HTTP con estados
-- **Aprendes:** AbortController, cleanup, error handling
-- **⚠️ Tú implementas:** Sistema completo de fetching
+- **Objetivo:** Consumir API de noticias y filtrar por categorías
+- **Aprendes:** API calls, filtrado, AbortController, PATCH requests
+- **⚠️ Tú implementas:** Hook completo para gestión de noticias
+- **🗂️ API Fake:** Incluye json-server con datos de noticias
 
 #### 🔥 Ejercicio 4: useForm Hook
 - **Dificultad:** Avanzado
 - **Objetivo:** Sistema completo de formularios
 - **Aprendes:** Validación, estados complejos, performance
 - **⚠️ Tú implementas:** Hook más complejo desde cero
-
-#### 💪 Ejercicio 5: Proyecto Integrador
-- **Dificultad:** Experto
-- **Objetivo:** Combinar múltiples hooks en app real
-- **Aprendes:** Arquitectura, composición, patrones
-- **⚠️ Tú implementas:** Proyecto completo funcional
 
 ## 🚀 Cómo Usar Este Proyecto
 
@@ -112,7 +107,20 @@ npm install
 
 # Inicia el servidor de desarrollo
 npm run dev
+
+# Para el Ejercicio 3 - API de Noticias
+# En otra terminal, ejecuta:
+npm run api
 ```
+
+### 🗂️ API de Noticias (Ejercicio 3)
+El proyecto incluye una API fake con json-server para el Ejercicio 3:
+- **Puerto:** http://localhost:3001
+- **Endpoints:**
+  - `GET /noticias` - Todas las noticias
+  - `GET /noticias?categoria=tecnologia` - Filtrar por categoría
+  - `GET /categorias` - Lista de categorías
+  - `PATCH /noticias/:id` - Actualizar noticia
 
 ### Navegación
 1. **Abre la aplicación** en tu navegador

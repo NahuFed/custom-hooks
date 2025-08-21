@@ -3,7 +3,6 @@ import Exercise1 from './Exercise1'
 import Exercise2 from './Exercise2'
 import Exercise3 from './Exercise3'
 import Exercise4 from './Exercise4'
-import Exercise5 from './Exercise5'
 
 const ExerciseSection = () => {
   const [currentExercise, setCurrentExercise] = useState('exercise1')
@@ -36,13 +35,6 @@ const ExerciseSection = () => {
       title: 'useForm Hook',
       difficulty: 'Avanzado',
       description: 'Hook completo para manejo de formularios'
-    },
-    { 
-      id: 'exercise5', 
-      label: '💪 Ejercicio 5',
-      title: 'Proyecto Integrador',
-      difficulty: 'Experto',
-      description: 'Combinar múltiples custom hooks'
     }
   ]
 
@@ -56,8 +48,6 @@ const ExerciseSection = () => {
         return <Exercise3 />
       case 'exercise4':
         return <Exercise4 />
-      case 'exercise5':
-        return <Exercise5 />
       default:
         return <Exercise1 />
     }

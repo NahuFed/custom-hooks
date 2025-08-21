@@ -51,7 +51,7 @@ const TheorySection = () => {
             </p>
 
             <div className="code-block">
-{`// ❌ Antes: Lógica duplicada en múltiples componentes
+              <pre>{`// ❌ Antes: Lógica duplicada en múltiples componentes
 function UserProfile() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -94,7 +94,7 @@ function UserProfile() {
 function UserSettings() {
   const { user, loading } = useUser()
   // ... resto del componente
-}`}
+}`}</pre>
             </div>
           </div>
         )
@@ -116,7 +116,7 @@ function UserSettings() {
 
             <h3>1. Convención de Nombrado</h3>
             <div className="code-block">
-{`// ✅ Correcto: Empieza con "use"
+              <pre>{`// ✅ Correcto: Empieza con "use"
 function useCounter() { ... }
 function useLocalStorage() { ... }
 function useApi() { ... }
@@ -124,12 +124,12 @@ function useApi() { ... }
 // ❌ Incorrecto: No empieza con "use"
 function counter() { ... }
 function localStorage() { ... }
-function apiHelper() { ... }`}
+function apiHelper() { ... }`}</pre>
             </div>
 
             <h3>2. Solo en el Nivel Superior</h3>
             <div className="code-block">
-{`function MyComponent() {
+              <pre>{`function MyComponent() {
   // ✅ Correcto: En el nivel superior
   const [count, setCount] = useState(0)
   const { data } = useApi()
@@ -145,14 +145,14 @@ function apiHelper() { ... }`}
   }
   
   return <div>{count}</div>
-}`}
+}`}</pre>
             </div>
 
             <h3>3. Composición de Hooks</h3>
             <p>Los Custom Hooks pueden usar otros hooks (built-in u otros custom hooks):</p>
             
             <div className="code-block">
-{`function useCounter(initialValue = 0) {
+              <pre>{`function useCounter(initialValue = 0) {
   // Usando hooks built-in
   const [count, setCount] = useState(initialValue)
   
@@ -177,7 +177,7 @@ function useLocalStorageCounter(key, initialValue = 0) {
   }, [key, count])
   
   return { count, increment, decrement }
-}`}
+}`}</pre>
             </div>
           </div>
         )
@@ -193,7 +193,7 @@ function useLocalStorageCounter(key, initialValue = 0) {
             </p>
 
             <div className="code-block">
-{`// hooks/useCounter.js
+              <pre>{`// hooks/useCounter.js
 import { useState, useCallback } from 'react'
 
 function useCounter(initialValue = 0, step = 1) {
@@ -226,13 +226,13 @@ function useCounter(initialValue = 0, step = 1) {
     reset,
     setValue
   }
-}`}
+}`}</pre>
             </div>
 
             <h3>Uso del Hook:</h3>
             
             <div className="code-block">
-{`// Componente que usa el hook
+              <pre>{`// Componente que usa el hook
 function CounterComponent() {
   const { count, increment, decrement, reset } = useCounter(0, 2)
   
@@ -244,7 +244,7 @@ function CounterComponent() {
       <button onClick={reset}>Reset</button>
     </div>
   )
-}`}
+}`}</pre>
             </div>
 
             <div className="exercise-demo">
@@ -275,7 +275,7 @@ function CounterComponent() {
             </p>
 
             <div className="code-block">
-{`// hooks/useApi.js
+              <pre>{`// hooks/useApi.js
 import { useState, useEffect, useCallback, useRef } from 'react'
 
 function useApi(url, options = {}) {
@@ -330,40 +330,26 @@ function useApi(url, options = {}) {
         cancelTokenRef.current.abort()
       }
     }
-  }, [fetchData, url])
-  
-  // Función para refetch manual
-  const refetch = useCallback(() => {
-    return fetchData()
   }, [fetchData])
   
-  // Función para hacer POST/PUT/DELETE
-  const mutate = useCallback(async (method, body, customOptions = {}) => {
-    return fetchData(url, {
-      method,
-      headers: {
-        'Content-Type': 'application/json',
-        ...customOptions.headers
-      },
-      body: JSON.stringify(body),
-      ...customOptions
-    })
-  }, [fetchData, url])
+  const refetch = useCallback(() => {
+    fetchData()
+  }, [fetchData])
   
   return {
     data,
     loading,
     error,
     refetch,
-    mutate
+    fetchData
   }
-}`}
+}`}</pre>
             </div>
 
             <h3>Uso del Hook Avanzado:</h3>
             
             <div className="code-block">
-{`function UsersList() {
+              <pre>{`function UsersList() {
   const { data: users, loading, error, refetch } = useApi('/api/users')
   
   if (loading) return <div>Cargando usuarios...</div>
@@ -401,7 +387,7 @@ function CreateUser() {
       </button>
     </form>
   )
-}`}
+}`}</pre>
             </div>
 
             <div className="exercise-demo">
@@ -420,7 +406,7 @@ function CreateUser() {
             <p>Cada custom hook debe tener una responsabilidad específica y bien definida.</p>
             
             <div className="code-block">
-{`// ✅ Bueno: Hook específico para gestión de formularios
+              <pre>{`// ✅ Bueno: Hook específico para gestión de formularios
 function useForm(initialValues, validationRules) {
   // Lógica específica de formularios
 }
@@ -433,14 +419,14 @@ function useLocalStorage(key, defaultValue) {
 // ❌ Malo: Hook que hace demasiadas cosas
 function useEverything() {
   // Maneja formularios, localStorage, API calls, etc.
-}`}
+}`}</pre>
             </div>
 
             <h3>2. 🔄 Limpieza de Recursos</h3>
             <p>Siempre limpia recursos como timers, subscripciones, y event listeners.</p>
             
             <div className="code-block">
-{`function useInterval(callback, delay) {
+              <pre>{`function useInterval(callback, delay) {
   const savedCallback = useRef()
   
   useEffect(() => {
@@ -457,14 +443,14 @@ function useEverything() {
       return () => clearInterval(id) // ✅ Limpieza
     }
   }, [delay])
-}`}
+}`}</pre>
             </div>
 
             <h3>3. 📊 Retorno Consistente</h3>
             <p>Mantén un patrón consistente en lo que retornas.</p>
             
             <div className="code-block">
-{`// ✅ Bueno: Retorno consistente con objeto
+              <pre>{`// ✅ Bueno: Retorno consistente con objeto
 function useApi(url) {
   return {
     data,
@@ -485,12 +471,12 @@ function useInconsistent(condition) {
     return { data, loading }
   }
   return [error, retry]
-}`}
+}`}</pre>
             </div>
 
             <h3>4. 🔒 Tipado con TypeScript</h3>
             <div className="code-block">
-{`interface UseApiReturn<T> {
+              <pre>{`interface UseApiReturn<T> {
   data: T | null
   loading: boolean
   error: string | null
@@ -499,14 +485,14 @@ function useInconsistent(condition) {
 
 function useApi<T>(url: string): UseApiReturn<T> {
   // Implementación tipada
-}`}
+}`}</pre>
             </div>
 
             <h3>5. 🧪 Testing</h3>
             <p>Escribe tests para tus custom hooks usando React Testing Library.</p>
             
             <div className="code-block">
-{`import { renderHook, act } from '@testing-library/react'
+              <pre>{`import { renderHook, act } from '@testing-library/react'
 import { useCounter } from './useCounter'
 
 test('should increment counter', () => {
@@ -517,7 +503,7 @@ test('should increment counter', () => {
   })
   
   expect(result.current.count).toBe(1)
-})`}
+})`}</pre>
             </div>
 
             <div className="highlight-box">
