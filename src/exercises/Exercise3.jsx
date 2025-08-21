@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import TestNews from '../components/TestNews'
 
 const Exercise3 = () => {
   const [showSolution, setShowSolution] = useState(false)
@@ -59,12 +60,13 @@ const { noticias, loading, cargarNoticias, filtrarPorCategoria } = useNews()
         </div>
 
         <div className="exercise-demo">
-          <h3>🎮 Área de Testing</h3>
-          <TestingArea />
+          <h3>🧪 Componente de Prueba</h3>
+          <p>Usa este componente para probar tu hook una vez implementado:</p>
+          <TestNews />
         </div>
 
         <div className="exercise-demo">
-          <h3>🧪 Área de Práctica</h3>
+          <h3>🎮 Área de Práctica</h3>
           <PracticeArea />
         </div>
 
