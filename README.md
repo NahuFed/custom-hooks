@@ -71,23 +71,23 @@ Los ejercicios incluyen:
 - **⚠️ Tú implementas:** El código completo del hook
 
 #### 🎯 Ejercicio 2: useLocalStorage Hook
-- **Dificultad:** Intermedio  
-- **Objetivo:** Sincronizar estado con localStorage
-- **Aprendes:** useEffect, serialización, event listeners
-- **⚠️ Tú implementas:** Persistencia y sincronización
+- **Dificultad:** Fácil
+- **Objetivo:** Guardar y recuperar datos del localStorage
+- **Aprendes:** Persistencia simple, useEffect básico
+- **⚠️ Tú implementas:** Hook básico sin complejidades
 
-#### ⚡ Ejercicio 3: useNews Hook - API de Noticias
+#### ⚡ Ejercicio 3: useNews Hook - API Simple
 - **Dificultad:** Intermedio
-- **Objetivo:** Consumir API de noticias y filtrar por categorías
-- **Aprendes:** API calls, filtrado, AbortController, PATCH requests
-- **⚠️ Tú implementas:** Hook completo para gestión de noticias
+- **Objetivo:** Consumir API de noticias y filtrar datos
+- **Aprendes:** fetch básico, manejo de estados de carga
+- **⚠️ Tú implementas:** Hook para consumir APIs de forma simple
 - **🗂️ API Fake:** Incluye json-server con datos de noticias
 
 #### 🔥 Ejercicio 4: useForm Hook
-- **Dificultad:** Avanzado
-- **Objetivo:** Sistema completo de formularios
-- **Aprendes:** Validación, estados complejos, performance
-- **⚠️ Tú implementas:** Hook más complejo desde cero
+- **Dificultad:** Intermedio
+- **Objetivo:** Manejar valores de formularios sin repetir código
+- **Aprendes:** Manejo de objetos de estado, event handling
+- **⚠️ Tú implementas:** Hook para formularios básicos
 
 ## 🚀 Cómo Usar Este Proyecto
 
